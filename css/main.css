@@ -1,0 +1,322 @@
+/* MAIN CSS */
+
+@font-face {
+  font-family: Netto;
+  src: url('./fonts/netto_ot.ttf');
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url('./fonts/barlow.ttf');
+}
+
+@media (min-width: 500px) {
+  #app {
+    width: 360px;
+    height: 100%;
+    margin: auto;
+  }
+}
+
+:root {
+  --primary: #0087E8;
+  --secondary: #6B6570;
+  --background: #ededed;
+  --dark: #282727;
+  --light: #fff;
+  --red: #f10032;
+  --green: #47cf73;
+}
+
+* {
+  font-family: Barlow, Netto, 'PT Sans', sans-serif;
+  outline: none;
+}
+
+body {
+  background: var(--background);
+  padding: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('pageLoader.gif') 50% 50% no-repeat rgb(249, 249, 249);
+  background-size: 20vw;
+  text-align: center;
+}
+
+#menu {
+  color: #b2b2b2;
+  font-size: 200%;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* BUTTONS */
+
+button {
+  font-size: 180%;
+  color: #fff;
+  margin: 3vh;
+  border-radius: 10px;
+  width: 80%;
+  height: 10vh;
+}
+
+button:active {
+  -webkit-transform: scale3d(0.9, 0.9, 1);
+}
+
+button.charge {
+  border: 1px solid var(--green);
+  background: var(--green);
+}
+
+button.cancel {
+  border: 1px solid var(--red);
+  background: var(--red);
+}
+
+button.regular {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+}
+
+.number {
+  box-shadow: var(--primary) 0 0 1px 1px;
+  font-size: 2em;
+}
+
+.clear {
+  box-shadow: var(--red) 0 0 1px 1px;
+}
+
+.button {
+  background: var(--background);
+  color: var(--secondary);
+  border: none;
+  border-radius: 50%;
+  text-align: center;
+  width: 22%;
+  height: 0;
+  margin: 1%;
+  padding: 11% 0;
+  font-size: 250%;
+  line-height: 0;
+}
+
+.button:active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.clear:active {
+  background: var(--red);
+  color: #fff;
+}
+
+.enter:active {
+  background: var(--green);
+  color: #fff;
+}
+
+/* COLORS */
+
+.dark {
+  color: var(--dark);
+}
+
+.red {
+  color: var(--red);
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.secondary {
+  color: var(--secondary);
+}
+
+/* TEXT */
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+#status {
+  position: relative;
+  top: 58vh;
+}
+
+.maintext {
+  margin: 2% auto;
+  width: 92%;
+  text-align: center;
+}
+
+.formtext {
+  margin-left: 10vw;
+  margin-bottom: 0vw;
+}
+
+.subtext {
+  font-size: 17px;
+  margin: 0% auto;
+  width: 92%;
+  text-align: center;
+  font-style: italic;
+}
+
+.subtext .memo {
+  font-family: monospace;
+  font-style: normal;
+  font-size: 20px;
+  padding: 3px;
+  background-color: var(--light);
+  line-height: 50px;
+  border-radius: 5px;
+}
+
+.info {
+  font-size: 50px;
+}
+
+.confirm {
+  font-size: 30px;
+}
+
+/* IMAGES */
+
+img {
+  display: block;
+  margin: 0 auto;
+  width: 71%;
+  height: auto;
+}
+
+.mainImage {
+  margin: 27px auto;
+  height: 50vh;
+  width: auto;
+}
+
+.lock {
+  width: 5.5vw;
+  display: inline;
+}
+
+.unlocked {
+  fill: var(--red);
+}
+
+/* ANIMATIONS */
+
+.fade-enter-active {
+  transition: all .3s ease;
+}
+
+.fade-leave-active {
+  transition: opacity 0s;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+/* FORM */
+
+form input:focus, form select:focus, form textarea:focus, form button:focus {
+  outline: none;
+}
+
+.input {
+  margin: 2%;
+  background: var(--background);
+  width: 80%;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+}
+
+.pad {
+  font-size: 3em;
+  text-align: center;
+}
+
+.settings {
+  font-size: 1.5em;
+  padding: 10px;
+}
+
+/* test */
+.tx-wrap {
+  background: #d5d5d5;
+  width: 85%;
+  height: 19vw;
+  border-radius: 5px;
+  margin: 1vw auto;
+}
+
+div.tx-wrap p span {
+  padding: 2vw;
+}
+
+.tx-span {
+  padding: 2vw;
+}
+
+.tx-detail {
+  font-size: .8em;
+  margin-top: 0;
+}
+
+/*test*/
+select {
+  width: 85%;
+  font-size: 1.5em;
+  background: #d5d5d5;
+  margin: 10px;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+
+  width: 80%;
+  height: 7px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: var(--primary);
+  border-radius: 10px;
+}

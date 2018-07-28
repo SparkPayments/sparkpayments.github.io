@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- This is a wide open CSP declaration. Lock this down for production. -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+  <title>Spark Payments</title>
+
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+  <div id="app">
+    <audio id="kaching">
+      <source src="kaching.mp3" type="audio/mp3">
+    </audio>
+    <!-- loader div -->
+    <transition name="fade">
+      <div id="loader" v-show="route === 'loader'"><span id="status" class="dark">loading...</span></div>
+    </transition>
+    <div id='content'>
+      <span @click="route = 'settings'" v-show="route == 'home'" id="menu">☰</span>
+      <span @click="route = 'home'" v-show="route == 'settings' && settings.account" id="menu">✕</span>
+      <img class='logo' src='img/logo.png'>
+      <!-- CONNECTION -->
+      <transition name="fade">
+        <div id="connection" v-show="route === 'connection'">
+          <h1 class='red'>Not connected</h1>
+          <h1 class='dark'>Please check internet</h1>
+        </div>
+      </transition>
+      <!-- SALE PAGE -->
+      <transition name="fade">
+        <div id="sale" v-show="route === 'home'">
+          <div class="center">
+            <form autocomplete='off'>
+              <input v-model='amountInput' type='text' class='input pad' value='' disabled>
+              <br>
+              <input @click="add('1')" type='button' class='button number' value='1'>
+              <input @click="add('2')" type='button' class='button number' value='2'>
+              <input @click="add('3')" type='button' class='button number' value='3'>
+              <br>
+              <input @click="add('4')" type='button' class='button number' value='4'>
+              <input @click="add('5')" type='button' class='button number' value='5'>
+              <input @click="add('6')" type='button' class='button number' value='6'>
+              <br>
+              <input @click="add('7')" type='button' class='button number' value='7'>
+              <input @click="add('8')" type='button' class='button number' value='8'>
+              <input @click="add('9')" type='button' class='button number' value='9'>
+              <br>
+              <input @click="add('0')" type='button' class='button number' value='0'>
+              <input @click="add('00')" type='button' class='button number' value='00'>
+              <input @click="remove" type='button' class='button clear' value='⌫'>
+              <br>
+              <button @click.prevent="purchase" class="charge">charge</button>
+            </form>
+          </div>
+        </div>
+      </transition>
+      <!-- PURCHASE PAGE -->
+      <transition name="fade">
+        <div id="purchase" v-show="route === 'qr'">
+          <div class="secondary maintext info"><span class='price'>{{ amountInput }} {{ settings.currency }}</span></div>
+          <p class="secondary subtext">~ {{ settings.format === 'mdash' ? price.mdash : price.dash }}</p>
+          <img id="qr" class="" />
+          <p v-show="price.received > 0" class="secondary maintext confirm">received: {{ settings.format === 'dash' ? parseFloat(price.received).toFixed(8) : (price.received
+            * 1000000).toFixed(2) }} {{ settings.format }}</p>
+          <p v-show="price.received == 0" class="secondary maintext confirm">waiting for payment...</p>
+          <div class="center">
+            <progress id="waiting" value="0" max="120"></progress>
+          </div>
+          <br>
+          <div class='center'>
+            <button @click="cancel" class="cancel">cancel</button>
+          </div>
+        </div>
+      </transition>
+      <!-- CONFIRM -->
+      <transition name="fade">
+        <div id="confirm" v-show="route === 'confirmed'">
+          <br>
+          <p class="dark maintext confirm">Payment Received!&nbsp;<img v-show="locked === false" class="lock" src="img/unlocked.png"></p>
+          <br>
+          <img src='img/confirm.png'>
+          <br>
+          <p class="dark maintext confirm">Thank you!</p>
+          <br>
+          <div class='center'>
+            <button @click="cancel" class="regular">done</button>
+          </div>
+        </div>
+      </transition>
+      <!-- TIMEOUT -->
+      <transition name="fade">
+        <div id="confirm" v-show="route === 'timeout'">
+          <br>
+          <p class="dark maintext confirm">Payment Expired!</p>
+          <br>
+          <img src='img/timeout.png'>
+          <br>
+          <p class="dark maintext confirm">Please try again.</p>
+          <br>
+          <div class='center'>
+            <button @click="cancel" class="regular">done</button>
+          </div>
+        </div>
+      </transition>
+      <!-- SETTINGS PAGE -->
+      <transition name="fade">
+        <div id="settings" v-show="route === 'settings'">
+          <div class="center">
+            <form autocomplete='off'>
+              <p class="dark formtext" align="left">dash address</p>
+              <input v-model='settings.account' type='text' class='input settings' value=''>
+              <p class="dark formtext" align="left">local currency</p>
+              <select v-model="settings.currency">
+                <option value="AED">AED - United Arab Emirates Dirham</option>
+                <option value="AFN">AFN - Afghan Afghani</option>
+                <option value="ARS">ARS - Argentine Peso</option>
+                <option value="AUD">AUD - Australian Dollar</option>
+                <option value="BBD">BBD - Barbadian Dollar</option>
+                <option value="BDT">BDT - Bangladeshi Taka</option>
+                <option value="BGN">BGN - Bulgarian Lev</option>
+                <option value="BHD">BHD - Bahraini Dinar</option>
+                <option value="BMD">BMD - Bermudan Dollar</option>
+                <option value="BND">BND - Brunei Dollar</option>
+                <option value="BOB">BOB - Bolivian Boliviano</option>
+                <option value="BRL">BRL - Brazilian Real</option>
+                <option value="BTN">BTN - Bhutanese Ngultrum</option>
+                <option value="BYN">BYN - Belarusian Ruble</option>
+                <option value="BZD">BZD - Belize Dollar</option>
+                <option value="CAD">CAD - Canadian Dollar</option>
+                <option value="CHF">CHF - Swiss Franc</option>
+                <option value="CLP">CLP - Chilean Peso</option>
+                <option value="CNY">CNY - Chinese Yuan</option>
+                <option value="COP">COP - Colombian Peso</option>
+                <option value="CRC">CRC - Costa Rican Colon</option>
+                <option value="CZK">CZK - Czech Republic Koruna</option>
+                <option value="DKK">DKK - Danish Krone</option>
+                <option value="DOP">DOP - Dominican Peso</option>
+                <option value="EGP">EGP - Eqyptian Pound</option>
+                <option value="ETB">ETB - Ethiopian Birr</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="GBP">GBP - British Pound</option>
+                <option value="GEL">GEL - Georgian Lari</option>
+                <option value="GHS">GHS - Ghanaian Cedi</option>
+                <option value="GMD">GMD - Gambian Dalasi</option>
+                <option value="GYD">GYD - Guyanaese Dollar</option>
+                <option value="HKD">HKD - Hong Kong Dollar</option>
+                <option value="HRK">HRK - Croatian Kuna</option>
+                <option value="HUF">HUF - Hungarian Forint</option>
+                <option value="IDR">IDR - Indonesian Rupiah</option>
+                <option value="ILS">ILS - Israeli New Shekel</option>
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="ISK">ISK - Icelandic Krona</option>
+                <option value="JMD">JMD - Jamaican Dollar</option>
+                <option value="JPY">JPY - Japanese Yen</option>
+                <option value="KES">KES - Kenyan Shilling</option>
+                <option value="KRW">KRW - South Korean Won</option>
+                <!-- <option value="KWD">KWD - Kuwaiti Dinar</option> 3 decimal places -->
+                <option value="KYD">KYD - Cayman Islands Dollar</option>
+                <option value="KZT">KZT - Kazakhstani Tenge</option>
+                <option value="LAK">LAK - Laotian Kip</option>
+                <option value="LKR">LKR - Sri Lankan Rupee</option>
+                <option value="LRD">LRD - Liberian Dollar</option>
+                <option value="LTL">LTL - Lithuanian Litas</option>
+                <option value="MAD">MAD - Moroccan Dirham</option>
+                <option value="MDL">MDL - Moldovan Leu</option>
+                <option value="MKD">MKD - Macedonian Denar</option>
+                <option value="MNT">MNT - Mongolian Tugrik</option>
+                <option value="MUR">MUR - Mauritian Rupee</option>
+                <option value="MWK">MWK - Malawian Kwacha</option>
+                <option value="MXN">MXN - Mexican Peso</option>
+                <option value="MYR">MYR - Malaysian Ringgit</option>
+                <option value="MZN">MZN - Mozambican Metical</option>
+                <option value="NAD">NAD - Namibian Dollar</option>
+                <option value="NGN">NGN - Nigerian Naira</option>
+                <option value="NIO">NIO - Nicaraguan Cordoba</option>
+                <option value="NOK">NOK - Norwegian Krone</option>
+                <option value="NPR">NPR - Nepalese Rupee</option>
+                <option value="NZD">NZD - New Zealand Dollar</option>
+                <!-- <option value="OMR">OMR - Omani Rial</option> 3 decimal places -->
+                <option value="PEN">PEN - Peruvian Sol</option>
+                <option value="PGK">PGK - Papua New Guinean Kina</option>
+                <option value="PHP">PHP - Philippine Peso</option>
+                <option value="PKR">PKR - Pakistani Rupee</option>
+                <option value="PLN">PLN - Polish Zloty</option>
+                <option value="PYG">PYG - Paraguayan Guarani</option>
+                <option value="QAR">QAR - Qatari Rial</option>
+                <option value="RON">RON - Romanian Leu</option>
+                <option value="RSD">RSD - Serbian Dinar</option>
+                <option value="RUB">RUB - Russian Ruble</option>
+                <option value="SAR">SAR - Saudi Riyal</option>
+                <option value="SEK">SEK - Swedish Krona</option>
+                <option value="SGD">SGD - Singapore Dollar</option>
+                <option value="SOS">SOS - Somali Shilling</option>
+                <option value="SRD">SRD - Surinamese Dollar</option>
+                <option value="SSP">SSP - South Sudanese Pound</option>
+                <option value="THB">THB - Thai Baht</option>
+                <option value="TRY">TRY - Turkish Lira</option>
+                <option value="TTD">TTD - Trinidad & Tobago Dollar</option>
+                <option value="TWD">TWD - New Taiwan Dollar</option>
+                <option value="TZS">TZS - Tanzanian Shilling</option>
+                <option value="UAH">UAH - Ukranian Hryvnia</option>
+                <option value="UGX">UGX - Ugandan Shilling</option>
+                <option value="USD">USD - United States Dollar</option>
+                <option value="UYU">UYU - Uruguayan Peso</option>
+                <option value="VEF">VEF - Venezuelan Bolivar</option>
+                <option value="VND">VND - Vietnamese Dong</option>
+                <option value="YER">YER - Yemeni Rial</option>
+                <option value="ZAR">ZAR - South African Rand</option>
+              </select>
+              <p class="dark formtext" align="left">default dash format</p>
+              <select v-model="settings.format">
+                <option value="dash">DASH</option>
+                <option value="mdash">mDash</option>
+              </select>
+              <button @click.prevent="save" class="regular">save</button>
+            </form>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </div>
+  <!-- LIBS -->
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="js/lib/aes.js"></script>
+  <script src="js/lib/qrious.min.js"></script>
+  <script src="js/lib/spark.api.js"></script>
+  <!-- SCRIPTS -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>
