@@ -3,16 +3,16 @@ var spark = {
 
     getExchangeRate: function(token, currency) {
       return new Promise(resolve => {
-        if (currency.match( /ARS|AUD|BRL|CAD|DKK|AED|EUR|HKD|INR|ILS|KES|MXN|NZD|NOK|PHP|PLN|GBP|SGD|SEK|CHF|USD|JPY|CNY/g ) !== null) {
-          spark.utils.ajax(`https://api.uphold.com/v0/ticker/${currency}`)
-            .then(function(result) {
-              console.log(result);
-              resolve(result[11]);
-            })
-            .catch(function(e) {
-              console.log(`error: ${e}`);
-            });
-        } else {
+        // if (currency.match( /ARS|AUD|BRL|CAD|DKK|AED|EUR|HKD|INR|ILS|KES|MXN|NZD|NOK|PHP|PLN|GBP|SGD|SEK|CHF|USD|JPY|CNY/g ) !== null) {
+        //   spark.utils.ajax(`https://api.uphold.com/v0/ticker/${currency}`)
+        //     .then(function(result) {
+        //       console.log(result);
+        //       resolve(result[11]);
+        //     })
+        //     .catch(function(e) {
+        //       console.log(`error: ${e}`);
+        //     });
+        // } else {
           spark.utils.ajax(`https://min-api.cryptocompare.com/data/price?fsym=${token}&tsyms=${currency}`)
             .then(function(result) {
               console.log(result);
@@ -21,7 +21,7 @@ var spark = {
             .catch(function(e) {
               console.log(`error: ${e}`);
             });
-        }
+        //}
       });
     },
 
