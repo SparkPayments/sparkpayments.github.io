@@ -18,6 +18,48 @@ function onBackKeyDown(e) {
   app.$data.route = 'home';
 }
 
+window.addEventListener('keydown', function(e) {
+  if (app.$data.route === 'home') {
+    switch (e.keyCode) {
+      case 49:
+        app.add('1');
+        break;
+      case 50:
+        app.add('2');
+        break;
+      case 51:
+        app.add('3');
+        break;
+      case 52:
+        app.add('4');
+        break;
+      case 53:
+        app.add('5');
+        break;
+      case 54:
+        app.add('6');
+        break;
+      case 55:
+        app.add('7');
+        break;
+      case 56:
+        app.add('8');
+        break;
+      case 57:
+        app.add('9');
+        break;
+      case 48:
+        app.add('0');
+        break;
+      case 8:
+        app.remove();
+        break;
+      case 46:
+        app.remove();
+    }
+  }
+}, false);
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -40,10 +82,10 @@ var app = new Vue({
   },
   computed: {
     amountInput: function() {
-      if (this.settings.currency.match( /BYN|CLP|ISK|JPY|KRW|PYG|UGX|UYU|VND/g ) !== null) {
+      if (this.settings.currency.match(/BYN|CLP|ISK|JPY|KRW|PYG|UGX|UYU|VND/g) !== null) {
         //these currencies have no decimals
         return this.price.native || 0;
-      } else if (this.settings.currency.match( /BHD|KWD|OMR/g ) !== null) {
+      } else if (this.settings.currency.match(/BHD|KWD|OMR/g) !== null) {
         //these currencies have 3 decimals
         return parseFloat(this.price.native / 100).toFixed(3) || 0;
       } else {
