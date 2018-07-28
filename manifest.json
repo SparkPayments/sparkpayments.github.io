@@ -1,0 +1,19 @@
+{
+  "name": "Spark Payments",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ededed",
+  "display": "standalone",
+  "theme_color": "#0087E8"
+}
