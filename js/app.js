@@ -17,7 +17,7 @@ function onBackKeyDown(e) {
   app.cancel()
   app.$data.route = 'home';
 }
-
+//keyboard input event listeners
 window.addEventListener('keydown', function(e) {
   if (app.$data.route === 'home') {
     switch (e.keyCode) {
@@ -56,6 +56,9 @@ window.addEventListener('keydown', function(e) {
         break;
       case 46:
         app.remove();
+        break;
+      case 13:
+        app.purchase();
     }
   }
   if (e.keyCode === 27) {
@@ -217,10 +220,6 @@ var app = new Vue({
       localStorage.setItem('currency', this.settings.currency);
       localStorage.setItem('format', this.settings.format);
       this.route = 'home';
-    },
-    //temp function for coming soon sweetalert
-    soon: function() {
-      swal("Sorry", "Feature coming soon :(", "error");
     }
   },
   //when vue instance is created (app is started), do these things
