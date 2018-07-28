@@ -58,6 +58,11 @@ window.addEventListener('keydown', function(e) {
         app.remove();
     }
   }
+  if (e.keyCode === 27) {
+    if (app.$data.route === 'settings') {
+      app.$data.route = 'home';
+    }
+  }
 }, false);
 
 var app = new Vue({
