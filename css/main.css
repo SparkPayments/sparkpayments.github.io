@@ -119,7 +119,7 @@ button.regular {
   border-radius: 50%;
   text-align: center;
   width: 22%;
-  height: 0;
+  -webkit-appearance: none;
   margin: 1%;
   padding: 11% 0;
   font-size: 250%;
