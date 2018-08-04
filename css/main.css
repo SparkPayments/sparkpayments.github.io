@@ -12,8 +12,7 @@
 
 @media (min-width: 500px) {
   #app {
-    width: 360px;
-    height: 100%;
+    width: 50vh;
     margin: auto;
   }
 }
