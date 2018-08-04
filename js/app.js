@@ -51,19 +51,30 @@ window.addEventListener('keydown', function(e) {
       case 48:
         app.add('0');
         break;
+      //backspace
       case 8:
         app.remove();
         break;
+      //delete
       case 46:
         app.remove();
-        break;
-      case 13:
-        app.purchase();
     }
   }
+  //esc key returns home if on settings screen
   if (e.keyCode === 27) {
     if (app.$data.route === 'settings') {
-      app.$data.route = 'home';
+      app.$data.route = 'loader';
+    }
+  }
+  //enter key
+  if (e.keyCode === 13) {
+    if (app.$data.route === 'settings') {
+      app.save();
+    }
+    if (app.$data.route === 'home') {
+      app.purchase();
+    } else {
+      app.cancel();
     }
   }
 }, false);
@@ -115,6 +126,7 @@ var app = new Vue({
     add: function(num) {
       this.price.native = this.price.native + num;
     },
+    //removes pressed key from amount display
     remove: function() {
       this.price.native = this.price.native.slice(0, -1);
     },
@@ -131,7 +143,7 @@ var app = new Vue({
       this.price.dash = `${(this.amountInput / parseFloat(await spark.utils.getExchangeRate('DASH', this.settings.currency))).toFixed(8)} DASH`;
       //set pice in mdash
       this.price.mdash = `${(parseFloat(this.price.dash) * 1000).toFixed(5)} mDash`;
-      //get new address for handle
+      //get address
       this.address = await spark.utils.getAddress(this.settings.account);
       //generate QR code with dash URL and price
       let qr = new QRious({
@@ -203,19 +215,33 @@ var app = new Vue({
         app.$data.route = 'timeout';
       }, 120000);
 
-      //show NFC page after we start listening
+      //show QR page
       this.route = 'qr';
     },
     cancel: function() {
-      //clear prices, memo, and return home
+      //clear prices, address, amount received, and return home
       this.clear();
       this.route = 'home';
     },
     //saves input value to local storage and return home
     save: async function() {
+      //if address starts with 'dash:' we remove it
       if (this.settings.account.startsWith('dash')) {
         this.settings.account = this.settings.account.split(':')[1];
       }
+      //validating the address form input
+      if (this.settings.account.startsWith('y')) {
+        if (!WAValidator.validate(this.settings.account, 'dash', 'testnet')) {
+          swal("Error!", "Please enter a valid Dash address.", "error");
+          return ;
+        }
+      } else {
+        if (!WAValidator.validate(this.settings.account, 'dash')) {
+          swal("Error!", "Please enter a valid Dash address.", "error");
+          return ;
+        }
+      }
+      //save settings to localStorage
       localStorage.setItem('account', this.settings.account);
       localStorage.setItem('currency', this.settings.currency);
       localStorage.setItem('format', this.settings.format);
@@ -228,6 +254,7 @@ var app = new Vue({
     if (!navigator.onLine) {
       this.route = 'connection';
     }
+    //if there's no account saved, show settings page
     if (!localStorage.getItem('account')) {
       this.route = 'settings';
     }
