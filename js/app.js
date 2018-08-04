@@ -63,7 +63,7 @@ window.addEventListener('keydown', function(e) {
   //esc key returns home if on settings screen
   if (e.keyCode === 27) {
     if (app.$data.route === 'settings') {
-      app.$data.route = 'loader';
+      app.$data.route = 'home';
     }
   }
   //enter key
