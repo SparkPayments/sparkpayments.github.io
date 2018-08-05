@@ -73,7 +73,7 @@
         <div id="purchase" v-show="route === 'qr'">
           <div class="secondary maintext info"><span class='price'>{{ amountInput }} {{ settings.currency }}</span></div>
           <p class="secondary subtext">~ {{ settings.format === 'mdash' ? price.mdash : price.dash }}</p>
-          <img id="qr" class="" />
+          <img id="qr"/>
           <p v-show="price.received > 0" class="secondary maintext confirm">received: {{ settings.format === 'dash' ? parseFloat(price.received).toFixed(8) : (price.received
             * 1000000).toFixed(2) }} {{ settings.format }}</p>
           <p v-show="price.received == 0" class="secondary maintext confirm">waiting for payment...</p>
@@ -121,8 +121,10 @@
         <div id="settings" v-show="route === 'settings'">
           <div class="center">
             <form autocomplete='off'>
-              <p class="dark formtext" align="left">dash address</p>
-              <input v-model='settings.account' type='text' class='input settings' value=''>
+              <div v-if="!isAddressStored()">
+                <p class="dark formtext" align="left">dash address</p>
+                <input v-model='settings.account' type='text' class='input settings' value=''>
+              </div>
               <p class="dark formtext" align="left">local currency</p>
               <select v-model="settings.currency">
                 <option value="AED">AED - United Arab Emirates Dirham</option>

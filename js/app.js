@@ -226,7 +226,7 @@ var app = new Vue({
     //saves input value to local storage and return home
     save: async function() {
       //if address starts with 'dash:' we remove it
-      if (this.settings.account.startsWith('dash')) {
+      if (this.settings.account.startsWith('dash:')) {
         this.settings.account = this.settings.account.split(':')[1];
       }
       //validating the address form input
@@ -246,6 +246,9 @@ var app = new Vue({
       localStorage.setItem('currency', this.settings.currency);
       localStorage.setItem('format', this.settings.format);
       this.route = 'home';
+    },
+    isAddressStored: function() {
+      return localStorage.getItem('account');
     }
   },
   //when vue instance is created (app is started), do these things
