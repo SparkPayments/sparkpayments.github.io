@@ -84,7 +84,7 @@ function countdown1() {
         day: 'Day',
         days: 'Days'
     }, function() {
-        alert('Done!');
+        console.log("Welcome to Spark Payments.")
     });
 }
 
