@@ -1,0 +1,84 @@
+html {
+  background: #ededed;
+}
+.codebox {
+  background: #36312B;
+  text-shadow: 0 1px rgba(0,0,0,.3);
+  color: #e2e2e2;
+  padding: 10px;
+  width: 65%;
+  border-radius: 7px;
+  margin: 10px auto;
+  overflow-y: scroll;
+}
+.element {
+  color: #93CE57;
+}
+.attribute {
+  color: #DD7847;
+}
+.value {
+  color: #F7BC33;
+}
+.comment {
+  color: #635f5a;
+}
+.flex-grid {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.flex-grid .col {
+  width: 32%;
+}
+input[type="text"], input[type="number"], select {
+  width: 100%;
+  font-size: 15px;
+  border-radius: 7px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  -webkit-appearance:none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+select {
+  width: 105%;
+  margin-top: 5px;
+}
+input[type="text"] {
+  margin-bottom: 10px;
+}
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 10px 50px;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+}
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+.label {
+  font-size: 15px;
+}
+@media (max-width: 400px) {
+  .flex-grid {
+    display: block;
+  }
+  .flex-grid .col {
+    width: 100%;
+  }
+  body {
+    padding: 10px;
+  }
+}

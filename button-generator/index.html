@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sparky Button Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" href="./css/sparky-modal.min.css">
+  <link rel="stylesheet" href="./css/sparky-button.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
+  <script src="./js/sparky.js" type="text/javascript"></script>
+  <!-- development version -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+  <!-- production version -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Sparky Button Generator</h1>
+    <div class="flex-grid">
+      <div class="col">
+        <h2>Payment Info</h2>
+        <span class="label">Dash Address</span>
+        <input v-model="address" type="text">
+        <span class="label">Label</span>
+        <input v-model="label" type="text">
+        <input type="checkbox" name="donation" v-model="donation">
+        <span>Specify Amount</span>
+        <div v-if="donation">
+          <span class="label">Amount</span>
+          <input v-model="amount" type="number" :disabled="!donation">
+        </div>
+      </div>
+      <div class="col">
+        <h2>Button Style</h2>
+        <ul>
+          <li class="sub-item">
+            <input v-model="button" type="radio" value="spark sb-blue">
+            <span class="label">Blue</span>
+          </li>
+          <li class="sub-item">
+            <input v-model="button" type="radio" value="spark sb-black">
+            <span class="label">Black</span>
+          </li>
+          <li class="sub-item">
+            <input v-model="button" type="radio" value="spark sb-outline">
+            <span class="label">Outline</span>
+          </li>
+          <li class="sub-item">
+            <input v-model="button" type="radio" value="spark sb-flat-blue">
+            <span class="label">Flat Blue</span>
+          </li>
+          <li class="sub-item">
+            <input v-model="button" type="radio" value="spark sb-flat-black">
+            <span class="label">Flat Black</span>
+          </li>
+          <li class="sub-item">
+            <input v-model="button" type="radio" value="spark sb-flat-midnight">
+            <span class="label">Flat Midnight</span>
+          </li>
+          <br>
+        </ul>
+        <div v-if="donation">
+          <span class="label">Currency</span>
+          <select v-model="currency" :disabled="!donation">
+            <option value="AED">AED - United Arab Emirates Dirham</option>
+            <option value="AFN">AFN - Afghan Afghani</option>
+            <option value="ARS">ARS - Argentine Peso</option>
+            <option value="AUD">AUD - Australian Dollar</option>
+            <option value="BBD">BBD - Barbadian Dollar</option>
+            <option value="BDT">BDT - Bangladeshi Taka</option>
+            <option value="BGN">BGN - Bulgarian Lev</option>
+            <option value="BHD">BHD - Bahraini Dinar</option>
+            <option value="BMD">BMD - Bermudan Dollar</option>
+            <option value="BND">BND - Brunei Dollar</option>
+            <option value="BOB">BOB - Bolivian Boliviano</option>
+            <option value="BRL">BRL - Brazilian Real</option>
+            <option value="BTN">BTN - Bhutanese Ngultrum</option>
+            <option value="BYN">BYN - Belarusian Ruble</option>
+            <option value="BZD">BZD - Belize Dollar</option>
+            <option value="CAD">CAD - Canadian Dollar</option>
+            <option value="CHF">CHF - Swiss Franc</option>
+            <option value="CLP">CLP - Chilean Peso</option>
+            <option value="CNY">CNY - Chinese Yuan</option>
+            <option value="COP">COP - Colombian Peso</option>
+            <option value="CRC">CRC - Costa Rican Colon</option>
+            <option value="CZK">CZK - Czech Republic Koruna</option>
+            <option value="DKK">DKK - Danish Krone</option>
+            <option value="DOP">DOP - Dominican Peso</option>
+            <option value="EGP">EGP - Eqyptian Pound</option>
+            <option value="ETB">ETB - Ethiopian Birr</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="GBP">GBP - British Pound</option>
+            <option value="GEL">GEL - Georgian Lari</option>
+            <option value="GHS">GHS - Ghanaian Cedi</option>
+            <option value="GMD">GMD - Gambian Dalasi</option>
+            <option value="GYD">GYD - Guyanaese Dollar</option>
+            <option value="HKD">HKD - Hong Kong Dollar</option>
+            <option value="HRK">HRK - Croatian Kuna</option>
+            <option value="HUF">HUF - Hungarian Forint</option>
+            <option value="IDR">IDR - Indonesian Rupiah</option>
+            <option value="ILS">ILS - Israeli New Shekel</option>
+            <option value="INR">INR - Indian Rupee</option>
+            <option value="ISK">ISK - Icelandic Krona</option>
+            <option value="JMD">JMD - Jamaican Dollar</option>
+            <option value="JPY">JPY - Japanese Yen</option>
+            <option value="KES">KES - Kenyan Shilling</option>
+            <option value="KRW">KRW - South Korean Won</option>
+            <option value="KWD">KWD - Kuwaiti Dinar</option>
+            <option value="KYD">KYD - Cayman Islands Dollar</option>
+            <option value="KZT">KZT - Kazakhstani Tenge</option>
+            <option value="LAK">LAK - Laotian Kip</option>
+            <option value="LKR">LKR - Sri Lankan Rupee</option>
+            <option value="LRD">LRD - Liberian Dollar</option>
+            <option value="LTL">LTL - Lithuanian Litas</option>
+            <option value="MAD">MAD - Moroccan Dirham</option>
+            <option value="MDL">MDL - Moldovan Leu</option>
+            <option value="MKD">MKD - Macedonian Denar</option>
+            <option value="MNT">MNT - Mongolian Tugrik</option>
+            <option value="MUR">MUR - Mauritian Rupee</option>
+            <option value="MWK">MWK - Malawian Kwacha</option>
+            <option value="MXN">MXN - Mexican Peso</option>
+            <option value="MYR">MYR - Malaysian Ringgit</option>
+            <option value="MZN">MZN - Mozambican Metical</option>
+            <option value="NAD">NAD - Namibian Dollar</option>
+            <option value="NGN">NGN - Nigerian Naira</option>
+            <option value="NIO">NIO - Nicaraguan Cordoba</option>
+            <option value="NOK">NOK - Norwegian Krone</option>
+            <option value="NPR">NPR - Nepalese Rupee</option>
+            <option value="NZD">NZD - New Zealand Dollar</option>
+            <option value="OMR">OMR - Omani Rial</option>
+            <option value="PEN">PEN - Peruvian Sol</option>
+            <option value="PGK">PGK - Papua New Guinean Kina</option>
+            <option value="PHP">PHP - Philippine Peso</option>
+            <option value="PKR">PKR - Pakistani Rupee</option>
+            <option value="PLN">PLN - Polish Zloty</option>
+            <option value="PYG">PYG - Paraguayan Guarani</option>
+            <option value="QAR">QAR - Qatari Rial</option>
+            <option value="RON">RON - Romanian Leu</option>
+            <option value="RSD">RSD - Serbian Dinar</option>
+            <option value="RUB">RUB - Russian Ruble</option>
+            <option value="SAR">SAR - Saudi Riyal</option>
+            <option value="SEK">SEK - Swedish Krona</option>
+            <option value="SGD">SGD - Singapore Dollar</option>
+            <option value="SOS">SOS - Somali Shilling</option>
+            <option value="SRD">SRD - Surinamese Dollar</option>
+            <option value="SSP">SSP - South Sudanese Pound</option>
+            <option value="THB">THB - Thai Baht</option>
+            <option value="TRY">TRY - Turkish Lira</option>
+            <option value="TTD">TTD - Trinidad & Tobago Dollar</option>
+            <option value="TWD">TWD - New Taiwan Dollar</option>
+            <option value="TZS">TZS - Tanzanian Shilling</option>
+            <option value="UAH">UAH - Ukranian Hryvnia</option>
+            <option value="UGX">UGX - Ugandan Shilling</option>
+            <option value="USD">USD - United States Dollar</option>
+            <option value="UYU">UYU - Uruguayan Peso</option>
+            <option value="VES">VES - Venezuelan Bolívar Soberano</option>
+            <option value="VND">VND - Vietnamese Dong</option>
+            <option value="YER">YER - Yemeni Rial</option>
+            <option value="ZAR">ZAR - South African Rand</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <h2>Logo Color</h2>
+        <ul>
+          <li class="sub-item">
+            <input v-model="logo" type="radio" value="./img/dash-white.svg">
+            <span class="label">White</span>
+          </li>
+          <li class="sub-item">
+            <input v-model="logo" type="radio" value="./img/dash-black.svg">
+            <span class="label">Black</span>
+          </li>
+        </ul>
+        <h2>Text Color</h2>
+        <ul>
+          <li class="sub-item">
+            <input v-model="text" type="radio" value="sb-text-white">
+            <span class="label">White</span>
+          </li>
+          <li class="sub-item">
+            <input v-model="text" type="radio" value="sb-text-black">
+            <span class="label">Black</span>
+          </li>
+        </ul>
+        <div>
+          <span style="margin-bottom: 6px; display: block" class="label">Button Preview</span>
+          <button style="margin-bottom: 5px;" data-sparky-open="#modal-spark" :class="style" alt="Spark, the easy way to pay with Dash.">
+            <img :src="logo" />
+            <span>{{ label }}</span>
+          </button>
+
+          <div id="modal-spark" data-sparky-address="XhdbbVc2ke4tka1nmVcVm2cBnQMPo2PuSF"></div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align: center;">To install, copy/paste this code inside your <code style="background: #36312B;text-shadow: 0 1px rgba(0,0,0,.3);color: #e2e2e2;padding: 10px;border-radius: 7px;">&lt;<span
+          class="element">head</span>&gt;&lt;/<span class="element">head</span>&gt;</code> element</p>
+    <div class="codebox">
+      <pre>
+<code>
+&lt;<span class="element">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"./css/sparky-modal.css"</span>&gt;
+&lt;<span class="element">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"./css/sparky-button.css"</span>&gt;
+&lt;<span class="element">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"https://code.jquery.com/jquery-2.2.4.min.js"</span>&gt;
+&lt;<span class="element">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"./js/sparky.js"</span>&gt;
+</code>
+</pre>
+    </div>
+    <p style="text-align: center;">And copy/paste this code inside your <code style="background: #36312B;text-shadow: 0 1px rgba(0,0,0,.3);color: #e2e2e2;padding: 10px;border-radius: 7px;">&lt;<span
+          class="element">body</span>&gt;&lt;/<span class="element">body</span>&gt;</code> element</p>
+    <div class="codebox">
+      <pre>
+<code>
+<em class="comment">&lt;!-- THIS IS YOUR BUTTON --&gt;</em>
+&lt;<span class="element">button</span> <span class="attribute">data-sparky-open</span>=<span class="value">"#modal-spark"</span> <span class="attribute">class</span>=<span class="value">"{{ style }}"</span> <span class="attribute">alt</span>=<span class="value">"Spark, the easy way to pay with Dash."</span>&gt;
+  &lt;<span class="element">img</span> <span class="attribute">src</span>=<span class="value">"{{ logo }}"</span>/&gt;
+  &lt;<span class="element">span</span>>{{ label }}&lt;/<span class="element">span</span>&gt;
+&lt;/<span class="element">button</span>&gt;
+
+<em class="comment">&lt;!-- THIS IS YOUR POP-UP MODAL --&gt;</em>
+&lt;<span class="element">div</span> <span class="attribute">id</span>=<span class="value">"modal-spark"</span> <span class="attribute">data-sparky-address</span>=<span class="value">"{{ address }}"</span><span v-if="donation"><span class="attribute"> data-sparky-amount</span>=<span class="value">"{{ amount }} {{ currency }}"</span></span>&gt;&lt;/<span class="element">div</span>&gt;
+</code>
+</pre>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        address: 'XhdbbVc2ke4tka1nmVcVm2cBnQMPo2PuSF',
+        label: 'Donate',
+        donation: false,
+        amount: '1.00',
+        currency: 'USD',
+        button: 'spark sb-blue',
+        text: 'sb-text-white',
+        logo: './img/dash-white.svg'
+      },
+      computed: {
+        style: function () {
+          return `${this.button} ${this.text}`
+        }
+      },
+      watch: {
+        button: function () {
+          if (this.button === 'spark sb-outline') {
+            this.text = 'sb-text-black'
+            this.logo = './img/dash-black.svg'
+          } else {
+            this.text = 'sb-text-white'
+            this.logo = './img/dash-white.svg'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
