@@ -1,0 +1,7 @@
+{
+    "version": "1.0",
+    "capabilities": "btc dash pubKey",
+    "endpoints": {
+        "directory": "https://get-spark.com/.well-known/{alias}.json"
+    }
+}
