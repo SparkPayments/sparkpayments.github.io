@@ -5,7 +5,7 @@
 ## Abstract
 In decentralized systems (especially those that utilize public-key cryptography), a user may wish to use an [internet identifier](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1) (an email-like address) instead of a public-key or complex alphanumeric identifier.
 
-This specification will assume that the <user> part will be restricted to the characters a-z0-9-_, lowercase.
+This specification will assume that the <user> part will be restricted to the characters `a-z0-9-_`, lowercase.
 
 Upon seeing an internet identifier, the client will resolve it with the domain to retrieve the information that the app requires; this could be user metadata, public keys for message signing, account identifiers, xpub keys for cryptocurrency, or anything else related to a public online identity.
 
@@ -33,7 +33,7 @@ If the `<domain>` is get-spark.com, we will reach out to the document that is pl
 	    "version": "1.0", 
 	    "capabilities": "json",
 	    "endpoints": {
-		    "directory": "https://get-spark.com/.well-known/{alias}.json",
+		"directory": "https://get-spark.com/.well-known/{alias}.json",
 	    }
     }
 
@@ -56,21 +56,28 @@ The result should be a JSON document containing information related to the user:
 
     {
 	    "metadata": {
-		    "displayName": "spencer",
-		    "profilePicture": "https://url.com/profile.jpg"
+		"displayName": "spencer",
+		"profilePicture": "https://url.com/profile.jpg"
 	    },
 	    "dash": "Xs71E43MSiTJPjwssjKoUW8PB6npBNd6Mb"
     }
 
 As of this version, the supported objects and keys are as follows:
-- A `metadata` object with the following keys:
--- `displayName`: if the user wants to display a name other than their username 
--- `profilePicture`: a url pointing to a profile picture
-- `pubKey`: a public key from a cryptographic keypair that can be used for signing messages  
-- `btc`: a base58 BTC address  
-- `btcex`: a bitcoin extended public key (xpub key)  
-- `dash`: a base58 Dash address  
-- `dashex`: a bitcoin extended public key (xpub key)
+
+A `metadata` object with the following keys
+| key | value |
+| --- | --- |
+| `displayName` | if the user wants to display a name other than their username |
+| `profilePicture` | a url pointing to a profile picture |
+
+Other supported keys:
+| key | value |
+| --- | --- |
+| `pubKey` | a public key from a cryptographic keypair that can be used for signing messages |
+| `btc` | a base58 BTC address |
+| `btcex` | a bitcoin extended public key (xpub key) |
+| `dash` | a base58 Dash address |
+| `dashex` | a bitcoin extended public key (xpub key) |
 
 ## Example
 If a client sees an identifier like this: kodaxx@get-spark.com
@@ -79,8 +86,8 @@ It will make a GET request to https://get-spark.com/.well-known/kodaxx.json and 
 
     {
 	    "metadata": {
-		    "displayName": "spencer",
-		    "profilePicture": "https://url.com/profile.jpg"
+		"displayName": "spencer",
+		"profilePicture": "https://url.com/profile.jpg"
 	    },
 	    "dash": "Xs71E43MSiTJPjwssjKoUW8PB6npBNd6Mb"
     }
