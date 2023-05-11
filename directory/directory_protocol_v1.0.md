@@ -77,7 +77,7 @@ Other supported keys:
 | `btc` | a base58 BTC address |
 | `btcex` | a bitcoin extended public key (xpub key) |
 | `dash` | a base58 Dash address |
-| `dashex` | a bitcoin extended public key (xpub key) |
+| `dashex` | a dash extended public key (xpub key) |
 
 ## Example
 If a client sees an identifier like this: kodaxx@get-spark.com
