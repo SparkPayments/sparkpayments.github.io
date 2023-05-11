@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Directory</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/create.js"></script>
+    <script src="./js/fileSaver.min.js"></script>
+</head>
+
+<body>
+    <!-- <input type="text" id="identity">
+    <input type="button" value="search" onclick="lookup()"> -->
+
+    <div class="wrapper">
+        <div class="wrapper-inner">
+            <div id="search" style="text-align: center; padding-top: 50px;">
+                <p style="color: white; font-size: 25px; font-family: monospace;">directory protocol</p>
+                <p><a style="color: white;" href="./index.html">back to search</a></p>
+                <p style="color: white;">create your identity record and upload it to /.well-known/yourfile.json on your
+                    domain.</p>
+                <p style="color: white;">make sure your domain can accept CORS requests.</p>
+            </div>
+            <div style="align-items: center;" id="card" class="box-wrapper">
+                <div class="box" style="padding-top: 10px;">
+                    <p style="margin:0; margin-top: 10px;">create a user record</p>
+                    <div class="box-inner">
+                        <input id="username" style="width: 80%; border: 1px solid black; margin: 5px;"
+                            placeholder="username" type="text" class="textbox">
+                        <input id="profile" style="width: 80%; border: 1px solid black; margin: 5px;"
+                            placeholder="profile pic url" type="text" class="textbox">
+                        <input id="address"
+                            style="width: 80%; border: 1px solid black; margin: 5px; margin-bottom: 30px;"
+                            placeholder="static dash address" type="text" class="textbox">
+                        <input style="width: 100%;" type="button" value="download" onclick="download()">
+                        <p id="version">directory protocol v1.0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

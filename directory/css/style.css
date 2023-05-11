@@ -75,7 +75,8 @@ body {
     padding: 30px;
 }
 
-#identity {
+#identity,
+.textbox {
     padding: 10px;
     border: none;
     border-radius: 5px;

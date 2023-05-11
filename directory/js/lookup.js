@@ -4,8 +4,8 @@ function lookup() {
 
     // parse identifier into user and domain
     let id = document.getElementById("identity").value.split('@');
-    let user = id[0];
-    let domain = id[1];
+    let user = id[0].toLowerCase();
+    let domain = id[1].toLowerCase();
 
     // reach out to domain and ask for user file
     fetch(`https://${domain}/.well-known/${user}.json`)

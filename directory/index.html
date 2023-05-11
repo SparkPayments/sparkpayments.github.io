@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internet Directory</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./qrcode.min.js"></script>
-    <script src="./lookup.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/qrcode.min.js"></script>
+    <script src="./js/lookup.js"></script>
 </head>
 
 <body>
@@ -21,6 +21,7 @@
                 <p style="color: white; font-size: 25px; font-family: monospace;">directory protocol</p>
                 <input type="text" id="identity">
                 <input type="button" value="search" onclick="lookup()">
+                <p><a style="color: white;" href="./create.html">create your own?</a></p>
                 <p id="error"></p>
             </div>
             <div style="display: none; align-items: center;" id="card" class="box-wrapper">
