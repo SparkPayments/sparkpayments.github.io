@@ -14,7 +14,7 @@
   <!-- development version -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
   <!-- production version -->
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
 </head>
 
 <body>
@@ -189,19 +189,24 @@
         </ul>
         <div>
           <span style="margin-bottom: 6px; display: block" class="label">Button Preview</span>
-          <button style="margin-bottom: 5px;" data-sparky-open="#modal-spark" :class="style" alt="Spark, the easy way to pay with Dash.">
+          <button style="margin-bottom: 5px;" data-sparky-open="#modal-spark" :class="style"
+            alt="Spark, the easy way to pay with Dash.">
             <img :src="logo" />
             <span>{{ label }}</span>
           </button>
 
           <div id="modal-spark" data-sparky-address="XhdbbVc2ke4tka1nmVcVm2cBnQMPo2PuSF"></div>
+          <!-- <div id="modal-spark" data-sparky-address="XhdbbVc2ke4tka1nmVcVm2cBnQMPo2PuSF"
+            :data-sparky-amount="specifiedAmount"> -->
         </div>
       </div>
     </div>
-    <p style="text-align: center;">To install, copy/paste this code inside your <code style="background: #36312B;text-shadow: 0 1px rgba(0,0,0,.3);color: #e2e2e2;padding: 10px;border-radius: 7px;">&lt;<span
+  </div>
+  <p style="text-align: center;">To install, copy/paste this code inside your <code
+      style="background: #36312B;text-shadow: 0 1px rgba(0,0,0,.3);color: #e2e2e2;padding: 10px;border-radius: 7px;">&lt;<span
           class="element">head</span>&gt;&lt;/<span class="element">head</span>&gt;</code> element</p>
-    <div class="codebox">
-      <pre>
+  <div class="codebox">
+    <pre>
 <code>
 &lt;<span class="element">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"https://get-spark.com/button-generator/css/sparky-modal.min.css"</span>&gt;
 &lt;<span class="element">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"https://get-spark.com/button-generator/css/sparky-button.min.css"</span>&gt;
@@ -209,11 +214,12 @@
 &lt;<span class="element">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"https://get-spark.com/button-generator/js/sparky.js"</span>&gt;&lt;/<span class="element">script</span>&gt;
 </code>
 </pre>
-    </div>
-    <p style="text-align: center;">And copy/paste this code inside your <code style="background: #36312B;text-shadow: 0 1px rgba(0,0,0,.3);color: #e2e2e2;padding: 10px;border-radius: 7px;">&lt;<span
+  </div>
+  <p style="text-align: center;">And copy/paste this code inside your <code
+      style="background: #36312B;text-shadow: 0 1px rgba(0,0,0,.3);color: #e2e2e2;padding: 10px;border-radius: 7px;">&lt;<span
           class="element">body</span>&gt;&lt;/<span class="element">body</span>&gt;</code> element</p>
-    <div class="codebox">
-      <pre>
+  <div class="codebox">
+    <pre>
 <code>
 <em class="comment">&lt;!-- THIS IS YOUR BUTTON --&gt;</em>
 &lt;<span class="element">button</span> <span class="attribute">data-sparky-open</span>=<span class="value">"#modal-spark"</span> <span class="attribute">class</span>=<span class="value">"{{ style }}"</span> <span class="attribute">alt</span>=<span class="value">"Spark, the easy way to pay with Dash."</span>&gt;
@@ -225,7 +231,7 @@
 &lt;<span class="element">div</span> <span class="attribute">id</span>=<span class="value">"modal-spark"</span> <span class="attribute">data-sparky-address</span>=<span class="value">"{{ address }}"</span><span v-if="donation"><span class="attribute"> data-sparky-amount</span>=<span class="value">"{{ amount }} {{ currency }}"</span></span>&gt;&lt;/<span class="element">div</span>&gt;
 </code>
 </pre>
-    </div>
+  </div>
   </div>
   <script type="text/javascript">
     var app = new Vue({
@@ -243,6 +249,9 @@
       computed: {
         style: function () {
           return `${this.button} ${this.text}`
+        },
+        specifiedAmount: function () {
+          return `${this.amount} ${this.currency}`
         }
       },
       watch: {
