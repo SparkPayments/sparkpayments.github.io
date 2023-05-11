@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet Directory</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./qrcode.min.js"></script>
+    <script src="./lookup.js"></script>
+</head>
+
+<body>
+    <!-- <input type="text" id="identity">
+    <input type="button" value="search" onclick="lookup()"> -->
+
+    <div class="wrapper">
+        <div class="wrapper-inner">
+            <div id="search" style="text-align: center; padding-top: 50px;">
+                <p style="color: white; font-size: 25px; font-family: monospace;">directory protocol</p>
+                <input type="text" id="identity">
+                <input type="button" value="search" onclick="lookup()">
+                <p id="error"></p>
+            </div>
+            <div style="display: none; align-items: center;" id="card" class="box-wrapper">
+                <div class="box">
+                    <div class="avatar">
+                        <img id="profile" src="">
+                    </div>
+                    <div class="box-inner">
+                        <h3 id="display" class="name"></h3>
+                        <div id="qrdiv">
+                            <div id="qrcode"></div>
+                        </div>
+                        <h3 id="address" class="address">no dash address found</h3>
+                        <input style="width: 100%;" type="button" value="search again" onclick="location.reload()">
+                        <p id="version">directory protocol v1.0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div>
+            <img id="profile" src="default.jpg" alt="profile picture">
+            <p id="display"></p>
+            <div id="qrcode"></div>
+            <p id="address"></p>
+        </div> -->
+</body>
+
+</html>
