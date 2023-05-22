@@ -75,9 +75,9 @@ Other supported keys:
 | --- | --- |
 | `pubKey` | a public key from a cryptographic keypair that can be used for signing messages |
 | `btc` | a base58 BTC address |
-| `btcex` | a bitcoin extended public key (xpub key) |
 | `dash` | a base58 Dash address |
-| `dashex` | a dash extended public key (xpub key) |
+| `nano` | a nano address |
+| `remote` | a url pointing to a remotely hosted identity record |
 
 ## Example
 If a client sees an identifier like this: kodaxx@get-spark.com
