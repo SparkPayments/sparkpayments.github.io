@@ -31,12 +31,14 @@ As this protocol evolves and more capabilities are added, this object could allo
 
 As of version `1.0`, there will be only one service endpoint, but it will be considered good practice to have this in the file anyway.
 
-    {
-      protocol: {
-        "version": "1.0", 
-    	"services": "btc dash nano nostr",
-      }
-    }
+```json
+{
+  "protocol": {
+    "version": "1.0",
+    "services": "btc dash nano nostr",
+  }
+}
+```
 
 This document will describe the specification version being used and service capabilities.
 
@@ -60,21 +62,23 @@ _note: params to narrow search results will only narrow results if the response 
 
 The result should be a JSON document containing information related to the user:
 
-    {
-      names:[
-        "<user>": {
-          "metadata": {
-            "display": "<display-name>",
-            "avatar": "<url>"
-          },
-          "<service>": {
-            "<key>": "<value",
-            ...
-          },
-          ...
-        }
-      ]
+```json
+{
+  "names":[
+    "<user>": {
+      "metadata": {
+        "display": "<display-name>",
+        "avatar": "<url>"
+      },
+      "<service>": {
+        "<key>": "<value",
+        ...
+      },
+      ...
     }
+  ]
+}
+```
 
 <br>
 
@@ -103,16 +107,18 @@ The purpose of this key is for a user to have the ability to use a hosted userna
 
 example:
 
-    {
-      names:[
-        "kodaxx": {
-          "metadata": {
-            "display": "spencer",
-            "avatar": "https://url.com/pic.jpg"
-          }
-        }
-      ]
+```json
+{
+  "names":[
+    "kodaxx": {
+      "metadata": {
+        "display": "spencer",
+        "avatar": "https://url.com/pic.jpg"
+      }
     }
+  ]
+}
+```
 
 <br>
 
@@ -151,19 +157,21 @@ If a client sees an identifier like this: kodaxx@get-spark.com
 
 It will make a GET request to https://get-spark.com/.well-known/dir.json?name=kodaxx&service=btc and get back a response that will look like
 
-    {
-      names:[
-        "kodaxx": {
-          "metadata": {
-            "display": "spencer",
-            "avatar": "https://url.com/pic.jpg"
-          },
-          "btc": {
-            "address": asdfasdfads,
-          }
-        }
-      ]
+```json
+{
+  "names":[
+    "kodaxx": {
+      "metadata": {
+        "display": "spencer",
+        "avatar": "https://url.com/pic.jpg"
+      },
+      "btc": {
+        "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+      }
     }
+  ]
+}
+```
 
 ## Notes
 
