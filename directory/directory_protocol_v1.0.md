@@ -71,7 +71,7 @@ The result should be a JSON document containing information related to the user:
         "avatar": "<url>"
       },
       "<service>": {
-        "<key>": "<value",
+        "<key>": "<value>",
         ...
       },
       ...
