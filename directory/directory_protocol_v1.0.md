@@ -7,7 +7,7 @@
 ## Abstract
 In decentralized systems (especially those that utilize public-key cryptography), a user may wish to use an [internet identifier](https://datatracker.ietf.org/doc/html/rfc5322#section-3.4.1) (an email-like address) instead of a public-key or complex alphanumeric identifier.
 
-This specification will assume that the <user> part will be restricted to the characters `a-z0-9-_`, lowercase.
+This specification will assume that the <user> part will be restricted to the characters `a-z0-9-_`
 
 Upon seeing an internet identifier, the client will resolve it with the domain to retrieve the information that the app requires; this could be user metadata, public keys for message signing, addresses for cryptocurrency, or anything else related to a public online identity.
 
@@ -65,11 +65,10 @@ The result should be a JSON document containing information related to the user:
 ```json
 {
   "names":[
-    "<user>": {
-      "metadata": {
-        "display": "<display-name>",
-        "avatar": "<url>"
-      },
+    {
+      "name": "<username>",
+      "display": "<display-name>",
+      "avatar": "<url>",
       "<service>": {
         "<key>": "<value>",
         ...
@@ -90,31 +89,33 @@ As of this version, the supported objects and services are as follows:
 | --- | --- |
 | `remote` | an optional key that contains a url pointing to a remotely hosted identity record |
 
-The `remote` key is reqired if the identity record is otherwise empty.
+The `remote` key is required if the identity record is otherwise empty.
 
 Likewise, if the `remote` key is used, everything else in this identity record should be empty and will be ignored.
 
 The purpose of this key is for a user to have the ability to use a hosted username service, but to host the identity themselves on a service like GitHub or any similar static file host.
-
+ 
 <br>
 
-### User Objects
-#### A required `metadata` object with the following keys
+If `remote` is not being used, these 3 keys are required:
+
 | key | value |
 | --- | --- |
+| `name` | this is the `<user>` part of the identifier |
 | `display` | if the user wants to display a name other than their username. this can default to be the same as `<user>` but should not be empty |
 | `avatar` | a url pointing to a profile picture |
+
+<br>
 
 example:
 
 ```json
 {
   "names":[
-    "kodaxx": {
-      "metadata": {
-        "display": "spencer",
-        "avatar": "https://url.com/pic.jpg"
-      }
+    {
+      "name": "<username>",
+      "display": "<display-name>",
+      "avatar": "<url>"
     }
   ]
 }
@@ -158,13 +159,13 @@ If a client sees an identifier like this: kodaxx@get-spark.com
 It will make a GET request to https://get-spark.com/.well-known/dir.json?name=kodaxx&service=btc and get back a response that will look like
 
 ```json
+  
 {
   "names":[
-    "kodaxx": {
-      "metadata": {
-        "display": "spencer",
-        "avatar": "https://url.com/pic.jpg"
-      },
+    {
+      "name": "kodaxx",
+      "display": "spencer",
+      "avatar": "https://url.com/pic.jpg",
       "btc": {
         "address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
       }
@@ -197,6 +198,6 @@ Users should serve their `/.well-known/<user>.json` file with the HTTP header:
 This will ensure it can be validated by clients running in modern browsers.
 
 ### Security Constraints
-The `/.well-known/<user>.json` endpoint **MUST NOT** return any HTTP redirects.
+The `/.well-known/dir.json?name=<user>` endpoint **MUST NOT** return any HTTP redirects.
 
-Clients **MUST** ignore any HTTP redirects given by the `/.well-known/<user>.json` endpoint.
+Clients **MUST** ignore any HTTP redirects given by the `/.well-known/dir.json?name=<user>` endpoint.
