@@ -1,7 +1,16 @@
 {
-    "version": "1.0",
-    "capabilities": "btc dash pubKey",
-    "endpoints": {
-        "directory": "https://get-spark.com/.well-known/{alias}.json"
-    }
+    "protocol": {
+        "version": "1.0",
+        "services": "dash"
+    },
+    "names": [
+        {
+            "name": "kodaxx",
+            "display": "spencer",
+            "avatar": "https://www.gizmodo.com.au/wp-content/uploads/sites/2/2021/02/20/gvxtolg2vpzafciu1lob.gif",
+            "dash": {
+                "address": "Xs71E43MSiTJPjwssjKoUW8PB6npBNd6Mb"
+            }
+        }
+    ]
 }
