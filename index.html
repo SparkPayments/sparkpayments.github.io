@@ -1,471 +1,389 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Spark is a self-hosted payment server and browser terminal for accepting cryptocurrency and card payments while keeping merchants in control."
+    />
+    <meta name="theme-color" content="#f5f7fb" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Spark" />
+    <meta property="og:title" content="Spark — Accept payments. Keep control." />
+    <meta
+      property="og:description"
+      content="A self-hosted payment server and fast browser terminal for merchants."
+    />
+    <meta property="og:url" content="https://get-spark.com/" />
+    <meta property="og:image" content="https://get-spark.com/images/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Spark — Accept payments. Keep control." />
+    <meta
+      name="twitter:description"
+      content="A self-hosted payment server and fast browser terminal for merchants."
+    />
+    <meta name="twitter:image" content="https://get-spark.com/images/og.png" />
+    <link rel="canonical" href="https://get-spark.com/" />
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="css/site.css" />
+    <title>Spark — Self-hosted payments</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Spark Payments" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <header class="site-header" data-header>
+      <div class="shell nav-shell">
+        <a class="brand" href="#top" aria-label="Spark home">
+          <img src="images/spark-logo.png" alt="Spark" />
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          data-menu-toggle
+        >
+          <span></span><span></span><span></span>
+          <span class="sr-only">Open navigation</span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary" data-menu>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#self-host">Self-host</a>
+          <a href="https://github.com/kodaxx/spark-server">GitHub</a>
+          <a class="nav-cta" href="app/index.html">Open terminal</a>
+        </nav>
+      </div>
+    </header>
 
-  <title>Spark Payments - Dash Payment Terminal</title>
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="images/favicon.ico" />
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" type="text/css"
-    href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;Raleway:300,400,500,600,700,800,900">
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
-
-  <!-- owl-carousel -->
-  <link rel="stylesheet" type="text/css" href="./css/owl-carousel/owl.carousel.css" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" type="text/css" href="./css/font-awesome.css" />
-
-  <!-- Magnific Popup -->
-  <link rel="stylesheet" type="text/css" href="./css/magnific-popup/magnific-popup.css" />
-
-  <!-- Animate -->
-  <link rel="stylesheet" type="text/css" href="./css/animate.css" />
-
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="./css/ionicons.min.css">
-
-  <!-- Style -->
-  <link rel="stylesheet" href="./css/style.css">
-
-  <!-- Responsive -->
-  <link rel="stylesheet" href="./css/responsive.css">
-
-</head>
-
-<body>
-
-  <!-- loading -->
-
-  <div id="loading" class="green-bg">
-    <div id="loading-center">
-      <div class="boxLoading"></div>
-    </div>
-  </div>
-
-  <!-- loading End -->
-
-
-
-  <!-- Header -->
-
-  <header id="header-wrap" data-spy="affix" data-offset-top="55">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <nav class="navbar navbar-default">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">
-                <img src="images/logo.png" alt="logo">
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-glow hero-glow-two"></div>
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span></span> Self-hosted payment infrastructure</p>
+            <h1>Accept payments.<br /><em>Keep control.</em></h1>
+            <p class="hero-lede">
+              Spark gives merchants a fast point-of-sale terminal backed by
+              their own payment server, wallets, nodes, and Stripe account.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="app/index.html">
+                Open Spark terminal <span aria-hidden="true">→</span>
+              </a>
+              <a
+                class="button button-secondary"
+                href="https://github.com/kodaxx/spark-server"
+              >
+                View server source
               </a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right" id="top-menu">
-                <li class="active"><a href="#home">home</a></li>
-                <li><a href="#about">about</a></li>
-                <li><a href="#screenshots">screenshots</a></li>
-                <li><a href="#faq">faq</a></li>
-                <li><a href="./button-generator/index.html">sparky button</a></li>
-                <li><a href="#download">download</a></li>
-                <li style="color:white; font-size: 13px; padding: 10px 0; font-family: Netto, 'Raleway', sans-serif;">|
-                </li>
-                <li><a href="./app/index.html">web app</a></li>
-              </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Header End -->
-
-  <!-- Banner -->
-
-  <section id="home" class="banner-03 iq-bg iq-bg-fixed iq-box-shadow iq-over-black-80"
-    style=" background: url(images/banner/bg.jpg);">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="iq-font-white iq-tw-8 text-center">The easiest way to accept digital cash</h1>
-          <div class="iq-mobile-app text-center">
-            <div class="iq-mobile-box">
-              <img class="iq-mobile-img" src="images/banner/02.png" alt="#">
-              <span data-depth="0.8" class="layer iq-mobile-icon icon-01" data-bottom="transform:translateX(50px)"
-                data-top="transform:translateX(-100px);">
-                <img src="images/banner/04.png" alt="#">
-              </span>
-              <span data-depth="0.8" class="layer iq-mobile-icon icon-02" data-bottom="transform:translateX(100px)"
-                data-top="transform:translateX(0px);">
-                <img src="images/banner/05.png" alt="#">
-              </span>
-              <span data-depth="0.8" class="layer iq-mobile-icon icon-03" data-bottom="transform:translateX(-50px)"
-                data-top="transform:translateX(40px);">
-                <img src="images/banner/06.png" alt="#">
-              </span>
-              <span data-depth="0.8" class="layer iq-mobile-icon icon-04" data-bottom="transform:translateX(-30px)"
-                data-top="transform:translateX(0px);">
-                <img src="images/banner/07.png" alt="#">
-              </span>
-              <span data-depth="0.8" class="layer iq-mobile-icon icon-05" data-bottom="transform:translateX(0px)"
-                data-top="transform:translateX(-50px);">
-                <img src="images/banner/08.png" alt="#">
-              </span>
+            <div class="hero-notes" aria-label="Product highlights">
+              <span><b>✓</b> Open source</span>
+              <span><b>✓</b> No seed phrases stored</span>
+              <span><b>✓</b> Configurable server</span>
             </div>
           </div>
-          <div class="link">
-            <h5 class="iq-font-white" data-animation="animated fadeInLeft">Choose your download!</h5>
-            <ul class="list-inline" data-animation="animated fadeInUp">
-              <li><a href="#"><i class="ion-social-apple"></i></a></li>
-              <li><a href="https://play.google.com/store/apps/details?id=com.kodaxx.spark"><i
-                    class="ion-social-android"></i></a></li>
-              <li><a href="https://github.com/SparkPayments"><i class="ion-social-github"></i></a></li>
-            </ul>
 
-            <p class="iq-font-white iq-mt-10">Spark is the world's easiest way to accept digital
-              cash. With Spark, your keys <em>and</em> funds remain in your control at all times.
-              No private keys are needed, there's no sign-up required, and the code is 100% open
-              source. <br><br>Could it be any simpler?</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Banner End -->
-
-  <div class="main-content">
-    <!-- Feature -->
-
-    <section id="about" class="overview-block-ptb iq-mt-50">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="heading-title">
-              <h2 class="title iq-tw-6">Spark is powered by Dash</h2>
-              <div class="divider"></div>
-              <p>Dash is Digital Cash</p>
+          <div class="product-stage" aria-label="Spark terminal preview">
+            <div class="status-pill">
+              <span></span>
+              7 payment methods ready
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 col-md-4 col-lg-4">
-            <div class="iq-fancy-box-03 text-left">
-              <i aria-hidden="true" class="ion-ribbon-b iq-font-blue"></i>
-              <h4 class="iq-tw-6">Easy To Use</h4>
-              <div class="info-03">
-                <p>Spark has been designed from the ground up to be familiar - and fit right into
-                  the way you do things <em>now</em></p>
+            <div class="terminal-window">
+              <div class="terminal-topbar">
+                <span class="terminal-icon">⚙</span>
+                <img src="images/spark-logo.png" alt="" />
+                <span class="terminal-icon">▤</span>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4 col-lg-4 re7-mt-30">
-            <div class="iq-fancy-box-03 text-left">
-              <i aria-hidden="true" class="ion-android-checkmark-circle iq-font-blue"></i>
-              <h4 class="iq-tw-6">Instant Payments</h4>
-              <div class="info-03">
-                <p>By accepting Dash with Spark, payments happen instantly with no possibility of
-                  chargebacks</p>
+              <div class="terminal-meta">
+                <span>New payment</span>
+                <small>7 methods ready</small>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-4 col-lg-4 re7-mt-30">
-            <div class="iq-fancy-box-03 text-left">
-              <i aria-hidden="true" class="ion-android-lock iq-font-blue"></i>
-              <h4 class="iq-tw-6">Safe & Secure</h4>
-              <div class="info-03">
-                <p>Private keys are not stored on the device - meaning that funds cannot be sent
-                  elsewhere</p>
+              <div class="terminal-amount">$42.00 <small>USD</small></div>
+              <div class="terminal-note">+ note</div>
+              <div class="keypad" aria-hidden="true">
+                <span>1</span><span>2</span><span>3</span>
+                <span>4</span><span>5</span><span>6</span>
+                <span>7</span><span>8</span><span>9</span>
+                <span>0</span><span>00</span><span>⌫</span>
               </div>
+              <div class="charge">Charge $42.00</div>
             </div>
+            <div class="paid-pill"><span>✓</span> Payment confirmed</div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Feature END -->
+      <section class="rails" aria-label="Supported payment methods">
+        <div class="shell rails-inner">
+          <p>One terminal. The rails you choose.</p>
+          <div class="rail-list">
+            <span>Bitcoin</span>
+            <span>Lightning</span>
+            <span>Bitcoin Cash</span>
+            <span>Litecoin</span>
+            <span>Dash</span>
+            <span>Nano</span>
+            <span>Cards via Stripe</span>
+          </div>
+        </div>
+      </section>
 
-    <hr>
+      <section class="section" id="features">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="eyebrow"><span></span> Built for real checkout</p>
+            <h2>Simple at the counter.<br />Serious behind the scenes.</h2>
+            <p>
+              The browser terminal stays focused on taking payments. Spark
+              Server handles configuration, invoices, rates, and settlement.
+            </p>
+          </div>
 
-    <!-- App Screenshots -->
-
-    <section id="screenshots" class="iq-app iq-bg iq-bg-fixed iq-font-white"
-      style="background: url(images/banner/bg.jpg);">
-      <div class="container-fluid">
-        <div class="row row-eq-height">
-          <div class="col-md-6 text-left iq-ptb-80 green-bg">
-            <div class="iq-app-info">
-              <h2 class="heading-left iq-font-white white iq-tw-6 ">Have a look!</h2>
-              <div class="lead iq-tw-6 iq-mb-20">Here's a bit of eye candy to give you an idea of
-                what we're about.</div>
-              <h4 class="iq-mt-50 iq-font-white iq-tw-6 iq-mb-15">Doesn't everyone love screenshots?</h4>
-              <p class="">We think that seeing is believing. Here you can see how easy it
-                is - just type the amount in your local currency, charge, and wait for
-                verification.
-                <br>
-                <br>
-                Simple. Effective. Fast. Oh, and did we mention secure?
+          <div class="feature-grid">
+            <article class="feature-card feature-card-large">
+              <span class="feature-number">01</span>
+              <div class="feature-icon">⌁</div>
+              <h3>Merchant-controlled infrastructure</h3>
+              <p>
+                Run Spark on your own server. Connect public receiving wallet
+                data, your own Lightning node, and your own Stripe account.
               </p>
-            </div>
-          </div>
-          <div class="col-md-6 iq-app-screen iq-ptb-80">
-            <div class="home-screen-slide">
-              <div class="owl-carousel popup-gallery" data-nav-dots="true" data-nav-arrow="false" data-items="3"
-                data-sm-items="3" data-lg-items="3" data-md-items="2" data-autoplay="false">
-                <div class="item"><a href="images/screenshots/01.jpg" class="popup-img"><img class="img-responsive"
-                      src="images/screenshots/01.jpg" alt="#"></a></div>
-                <div class="item"><a href="images/screenshots/02.jpg" class="popup-img"><img class="img-responsive"
-                      src="images/screenshots/02.jpg" alt="#"></a></div>
-                <div class="item"><a href="images/screenshots/03.jpg" class="popup-img"><img class="img-responsive"
-                      src="images/screenshots/03.jpg" alt="#"></a></div>
+              <div class="custody-line">
+                <span>Spark terminal</span><i></i><span>Your server</span><i></i
+                ><span>Your accounts</span>
               </div>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-number">02</span>
+              <div class="feature-icon">⌁</div>
+              <h3>QR-first pairing</h3>
+              <p>
+                Create a terminal in the dashboard, scan its short-lived QR
+                code, and start charging. Credentials stay on that device.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-number">03</span>
+              <div class="feature-icon">◎</div>
+              <h3>Server-authoritative methods</h3>
+              <p>
+                The terminal automatically shows only payment methods that are
+                configured and ready for the merchant.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-number">04</span>
+              <div class="feature-icon">↻</div>
+              <h3>Live payment status</h3>
+              <p>
+                Invoices move from pending to confirming and paid while the
+                terminal keeps the cashier in a clear, focused flow.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-number">05</span>
+              <div class="feature-icon">▤</div>
+              <h3>Transaction history</h3>
+              <p>
+                Review recent invoices and their status directly from the
+                terminal, with the server as the source of truth.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-number">06</span>
+              <div class="feature-icon">⌘</div>
+              <h3>API ready</h3>
+              <p>
+                Idempotent invoice creation, hosted checkout pages, webhooks,
+                and a documented API support custom integrations.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section flow-section" id="how-it-works">
+        <div class="shell">
+          <div class="section-heading section-heading-light">
+            <p class="eyebrow"><span></span> From setup to paid</p>
+            <h2>Three steps to a working terminal.</h2>
+          </div>
+          <ol class="steps">
+            <li>
+              <span>1</span>
+              <div>
+                <h3>Run Spark Server</h3>
+                <p>
+                  Deploy the server, finish merchant setup, and connect the
+                  payment methods you want to accept.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>2</span>
+              <div>
+                <h3>Pair this browser</h3>
+                <p>
+                  Add a client in the dashboard and scan its one-time pairing
+                  QR code from the terminal.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>3</span>
+              <div>
+                <h3>Take a payment</h3>
+                <p>
+                  Enter an amount, choose a payment rail, and let Spark track
+                  the invoice through settlement.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section architecture-section" id="self-host">
+        <div class="shell architecture-grid">
+          <div>
+            <p class="eyebrow"><span></span> Your deployment, your rules</p>
+            <h2>Payments without giving up the keys.</h2>
+            <p class="architecture-copy">
+              Spark stores the public receiving information needed to create
+              invoices—not merchant seed phrases. Card payments go directly
+              through the merchant’s connected Stripe account.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/kodaxx/spark-server#quick-start"
+            >
+              Read the self-hosting guide <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="architecture-card">
+            <div class="architecture-node">
+              <small>At the counter</small>
+              <strong>Spark terminal</strong>
+              <span>Paired browser client</span>
+            </div>
+            <div class="architecture-arrow"><span>Encrypted API</span></div>
+            <div class="architecture-node architecture-node-blue">
+              <small>Your infrastructure</small>
+              <strong>Spark Server</strong>
+              <span>Invoices · pricing · status</span>
+            </div>
+            <div class="architecture-branches">
+              <span>Public wallets</span>
+              <span>Lightning node</span>
+              <span>Stripe Connect</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="shell faq-grid">
+          <div class="section-heading">
+            <p class="eyebrow"><span></span> Common questions</p>
+            <h2>Know what you’re running.</h2>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>Is the terminal hosted or installed?</summary>
+              <p>
+                The terminal is a static web app. Open it in a modern browser,
+                pair the device with your Spark Server, and it stores that
+                terminal credential locally.
+              </p>
+            </details>
+            <details>
+              <summary>Does Spark hold merchant funds?</summary>
+              <p>
+                No. Cryptocurrency invoices point to merchant-controlled
+                wallets or nodes. Card charges use the merchant’s connected
+                Stripe account.
+              </p>
+            </details>
+            <details>
+              <summary>Can one server support multiple terminals?</summary>
+              <p>
+                Yes. Create separate clients for counters or devices, then
+                configure payment-method availability per client.
+              </p>
+            </details>
+            <details>
+              <summary>Can developers integrate without this terminal?</summary>
+              <p>
+                Yes. Spark includes authenticated invoice APIs, public checkout
+                endpoints, webhooks, and a JavaScript SDK for custom systems.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="shell cta-card">
+          <div>
+            <p class="eyebrow eyebrow-light"><span></span> Ready when you are</p>
+            <h2>Turn this browser into a payment terminal.</h2>
+          </div>
+          <div class="cta-actions">
+            <a class="button button-white" href="app/index.html">Open terminal</a>
+            <a
+              class="button button-outline"
+              href="https://github.com/kodaxx/spark-server"
+              >Deploy the server</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <img src="images/spark-logo.png" alt="Spark" />
+          <p>Open-source payment infrastructure for merchants.</p>
+        </div>
+        <div>
+          <strong>Product</strong>
+          <a href="app/index.html">Web terminal</a>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+        </div>
+        <div>
+          <strong>Developers</strong>
+          <a href="https://github.com/kodaxx/spark-server">Spark Server</a>
+          <a href="https://github.com/kodaxx/spark2"
+            >Terminal source</a
+          >
+          <a href="https://github.com/kodaxx/spark-server/blob/main/API.md"
+            >API documentation</a
+          >
+        </div>
+        <div>
+          <strong>More</strong>
+          <a href="button-generator/">Sparky button</a>
+          <a href="directory/">Directory tools</a>
+          <a href="https://github.com/SparkPayments">GitHub organization</a>
         </div>
       </div>
-    </section>
-
-    <!-- App Screenshots END -->
-
-    <!-- Testimonials -->
-
-    <!--
-    <section class="overview-block-ptb grey-bg iq-loved-customers">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="heading-title">
-                        <h2 class="title iq-tw-6">Loved By The Community</h2>
-                        <div class="divider"></div>
-                        <p>The community is our priority. We believe in Dash and want to see it succeed. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="owl-carousel" data-nav-dots="false" data-nav-arrow="true" data-items="3" data-xs-items="1" data-sm-items="2" data-md-items="3" data-lg-items="3" data-autoplay="true">
-                        <div class="item">
-                            <div class="iq-client white-bg">
-                                <div class="client-img">
-                                    <img alt="#" class="img-responsive img-circle" src="images/testimonial/01.jpg">
-                                </div>
-                                <div class="client-info">
-                                    <div class="client-name iq-mb-10">
-                                        <h5 class="iq-tw-6">Jason Adams</h5>
-                                        <span class="sub-title iq-tw-6">Wyoming, USA</span>
-                                    </div>
-                                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="iq-client white-bg">
-                                <div class="client-img">
-                                    <img alt="#" class="img-responsive img-circle" src="images/testimonial/02.jpg">
-                                </div>
-                                <div class="client-info">
-                                    <div class="client-name iq-mb-10">
-                                        <h5 class="iq-tw-6">Amy Adams</h5>
-                                        <span class="sub-title iq-tw-6">Wyoming, USA</span>
-                                    </div>
-                                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="iq-client white-bg">
-                                <div class="client-img">
-                                    <img alt="#" class="img-responsive img-circle" src="images/testimonial/03.jpg">
-                                </div>
-                                <div class="client-info">
-                                    <div class="client-name iq-mb-10">
-                                        <h5 class="iq-tw-6">John Deo</h5>
-                                        <span class="sub-title iq-tw-6">Wyoming, USA</span>
-                                    </div>
-                                    <p>Lorem ipsum madolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor coli incididunt ut labore.</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
--->
-
-    <!-- Testimonials END -->
-
-    <!-- Frequently Asked Questions -->
-
-    <section id="faq" class="overview-block-ptb white-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="heading-title">
-              <h2 class="title iq-tw-6">Frequently Asked Questions</h2>
-              <div class="divider"></div>
-              <p>Got a question? Here are a few of the questions that we get a lot. Of course,
-                we're happy to answer any question you may have!</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <img class="img-responsive center-block" src="images/01.png" alt="">
-          </div>
-          <div class="col-sm-12 col-md-6">
-            <div class="iq-accordion iq-mt-50">
-              <div class="ad-block ad-active"> <a href="#" class="ad-title iq-tw-6 iq-font-grey"> <span
-                    class="ad-icon"><i class="ion-social-github" aria-hidden="true"></i></span>Is Spark open source?</a>
-                <div class="ad-details">Yes, Spark is 100% open source. If you feel up to it,
-                  you can go through our simple and well documented codebase to see how things
-                  work! We also appreciate any contributions to the project - so check us out on
-                  GitHub!</div>
-              </div>
-              <div class="ad-block"> <a href="#" class="ad-title iq-tw-6 iq-font-grey"> <span class="ad-icon"><i
-                      class="ion-locked" aria-hidden="true"></i></span>How do I know if my funds are safe?</a>
-                <div class="ad-details">Your private keys never need to be entered
-                  into Spark. That makes using Spark pretty safe. Nobody will have access to
-                  any of the funds you receive at any time.</div>
-              </div>
-              <div class="ad-block"> <a href="#" class="ad-title iq-tw-6 iq-font-grey"> <span class="ad-icon"><i
-                      class="ion-card" aria-hidden="true"></i></span>Does Spark do fiat conversion?</a>
-                <div class="ad-details">Yes. Technically. Spark supports static addresses so that
-                  merchants can convert to the currency of their choice instantly using
-                  uphold.com - we do not charge a fee for this, but uphold charges ~1.25%</div>
-              </div>
-              <div class="ad-block"> <a href="#" class="ad-title iq-tw-6 iq-font-grey"> <span class="ad-icon"><i
-                      class="ion-cash" aria-hidden="true"></i></span>Does Spark charge any fees?</a>
-                <div class="ad-details">No. Spark is completely free to use.</div>
-              </div>
-              <div class="ad-block"> <a href="#" class="ad-title iq-tw-6 iq-font-grey"> <span class="ad-icon"><i
-                      class="ion-help" aria-hidden="true"></i></span>Other questions?</a>
-                <div class="ad-details">If you have any other questions, please feel free to
-                  contact us at kodaxx@gmail.com</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Frequently Asked Questions END -->
-
-
-    <!-- Frequently Asked Questions -->
-
-    <section id="download" class="overview-block-ptb iq-bg iq-bg-fixed iq-over-black-80">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="heading-title iq-mb-40">
-              <h2 class="title iq-tw-6 iq-font-white">Download Spark</h2>
-              <div class="divider white"></div>
-              <p class="iq-font-white">You can download Spark from the App Store, the Google
-                Play store OR you can build the app from source following our build instructions.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <a class="button button-icon iq-mr-15" href="#"> <i class="ion-social-apple"></i>App Store</a>
-            <a class="button button-icon iq-mr-15 re4-mt-20"
-              href="https://play.google.com/store/apps/details?id=com.kodaxx.spark"> <i
-                class="ion-social-android"></i>Google Play</a>
-            <a class="button button-icon re7-mt-30 re4-mt-20" href="https://github.com/SparkPayments"> <i
-                class="ion-social-github"></i>GitHub</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Frequently Asked Questions END -->
-
-    <!-- Footer -->
-
-    <footer class="iq-footer-03 white-bg iq-ptb-20">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="footer-copyright iq-pt-10">Copyright @ <span id="copyright">
-                <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
-              </span>
-              <a href="#" class="text-green">kodaxx & spark payments</a> All Rights Reserved
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <ul class="info-share">
-              <li><a href="https://twitter.com/kodaxxdev"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="https://github.com/SparkPayments"><i class="fa fa-github"></i></a></li>
-            </ul>
-          </div>
-        </div>
+      <div class="shell footer-bottom">
+        <span>© <span data-year></span> Spark Payments</span>
+        <span>AGPL-3.0 open source software</span>
       </div>
     </footer>
 
-    <!--  END -->
-
-  </div>
-
-  <!-- back-to-top -->
-
-  <div id="back-to-top">
-    <a class="top" id="top" href="#top"> <i class="ion-ios-upload-outline"></i> </a>
-  </div>
-
-  <!-- back-to-top End -->
-
-  <!-- jQuery -->
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-
-  <!-- owl-carousel -->
-  <script type="text/javascript" src="js/owl-carousel/owl.carousel.min.js"></script>
-
-  <!-- Counter -->
-  <script type="text/javascript" src="js/counter/jquery.countTo.js"></script>
-
-  <!-- Jquery Appear -->
-  <script type="text/javascript" src="js/jquery.appear.js"></script>
-
-  <!-- Magnific Popup -->
-  <script type="text/javascript" src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-  <!-- wow -->
-  <script type="text/javascript" src="js/wow.min.js"></script>
-
-  <!-- Skrollr -->
-  <script type="text/javascript" src="js/skrollr.min.js"></script>
-
-  <!-- Countdown -->
-  <script type="text/javascript" src="js/jquery.countdown.min.js"></script>
-
-  <!-- bootstrap -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-  <!-- Custom -->
-  <script type="text/javascript" src="js/custom.js"></script>
-
-</body>
-
+    <script src="js/site.js"></script>
+  </body>
 </html>
