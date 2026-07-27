@@ -932,7 +932,7 @@ button {
 .footer-grid {
   display: grid;
   gap: 48px;
-  grid-template-columns: 1.8fr repeat(3, 1fr);
+  grid-template-columns: 2fr repeat(2, 1fr);
 }
 
 .footer-brand img {
@@ -1039,7 +1039,7 @@ button {
   }
 
   .footer-grid {
-    grid-template-columns: 1.6fr repeat(3, 1fr);
+    grid-template-columns: 1.8fr repeat(2, 1fr);
   }
 }
 
